@@ -1,0 +1,7 @@
+{
+      "username":"yourusernamehere",
+      "password":"yourpasswordhere",
+      "sharedSecret":"yoursharedsecrethere",
+      "identitySecret":"youridentitysecrethere",
+      "ownerID":"yoursteamID64here"
+}
