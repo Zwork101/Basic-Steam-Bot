@@ -1,2 +1,2 @@
-node botbot.js
+node botfile.js
 pause
