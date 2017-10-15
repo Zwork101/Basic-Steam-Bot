@@ -3,6 +3,6 @@
       "password":"yourpasswordhere",
       "sharedSecret":"yoursharedsecrethere",
       "identitySecret":"youridentitysecrethere",
-      "ownerID":"yoursteamID64here"
+      "ownerID":"yoursteamID64here",
       "addMessage":"Hello, thanks for adding me! :D"
 }
