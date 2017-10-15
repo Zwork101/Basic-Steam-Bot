@@ -4,4 +4,5 @@
       "sharedSecret":"yoursharedsecrethere",
       "identitySecret":"youridentitysecrethere",
       "ownerID":"yoursteamID64here"
+      "addMessage":"Hello, thanks for adding me! :D"
 }
