@@ -1,0 +1,2 @@
+node botbot.js
+pause
