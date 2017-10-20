@@ -33,10 +33,10 @@ client.on('loggedOn', () => {
                               The number can be found here: http://store.steampowered.com/app/440/ */
 });
 
-client.on('friendRelationship', (steamid, relationship) => {
+client.on('friendRelationship', (steamID, relationship) => {
     if (relationship === 2) {
-        client.addFriend(steamid);
-        client.chatMessage(steamid, config.addMessage);
+        client.addFriend(steamID);
+        client.chatMessage(steamID, config.addMessage);
     }
 });
 
