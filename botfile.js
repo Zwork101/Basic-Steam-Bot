@@ -52,14 +52,14 @@ client.on('webSession', (sessionid, cookies) => {
 function acceptOffer(offer) {
 	offer.accept((err) => {
 		community.checkConfirmations();
-		console.log("we Accepted an offer")
+		console.log("Accepted an offer from "+steamID)
 		if (err) console.log("There was an error accepting the offer");
 	});
 }
 
 function declineOffer(offer) {
 	offer.decline((err) => {
-		console.log("we Declined an offer")
+		console.log("Declined an offer from "+steamID)
 		if (err) console.log("There was an error declining the offer");
 	});
 }
