@@ -22,6 +22,8 @@ const logOnOptions = {
 	twoFactorCode: SteamTotp.generateAuthCode(config.sharedSecret)
 };
 
+client.setOption("promptSteamGuardCode", false);
+
 client.logOn(logOnOptions);
 
 client.on('loggedOn', () => {
@@ -113,8 +115,6 @@ manager.on('newOffer', (offer) => {
 		declineOffer(offer);
 	}
 }); */
-
-// client.setOption("promptSteamGuardCode", false);
 
 // Crafting soon
 
