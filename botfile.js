@@ -37,7 +37,9 @@ client.on('loggedOn', () => {
 
 client.on('friendRelationship', (steamID, relationship) => {
     if (relationship === 2) {
+	console.log("Friend request received: " + steamID)
         client.addFriend(steamID);
+	console.log("Sending add message")
         client.chatMessage(steamID, config.addMessage);
     }
 });
@@ -53,22 +55,23 @@ function acceptOffer(offer) {
 	offer.accept((err) => {
 		community.checkConfirmations();
 		console.log("Accepted an offer from "+steamID)
-		if (err) console.log("There was an error accepting the offer");
+		if (err) console.log("There was an error accepting the offer: " + err);
 	});
 }
 
 function declineOffer(offer) {
 	offer.decline((err) => {
 		console.log("Declined an offer from "+steamID)
-		if (err) console.log("There was an error declining the offer");
+		if (err) console.log("There was an error declining the offer: " + err);
 	});
 }
 
 function processOffer(offer) {
 	if (offer.isGlitched() || offer.state === 11) {
-	console.log("Offer was unavailable, declining.");
-	declineOffer(offer);
-	} else if (offer.partner.getSteamID64() === config.ownerID) {
+		console.log("Offer was unavailable, declining.");
+		declineOffer(offer);
+	} else if (offer.partner.toString() === config.ownerID) {
+		console.log("Offer recieved from owner, accepting.")
 		acceptOffer(offer);
 	} else {
 		var ourItems = offer.itemsToGive;
@@ -80,7 +83,7 @@ function processOffer(offer) {
 			if(Prices[item]) {
 				ourValue += Prices[item].sell
 			} else {
-				console.log("Invalid Value, declining.")
+				console.log("Item we're giving doesn't have a value: declining.")
 				ourValue+= 99999;
 			}
 		}
@@ -89,11 +92,11 @@ function processOffer(offer) {
 			if(Prices[item]) {
 				theirValue += Prices[item].buy;
 			} else {
-			console.log("Their item value was different.")
+				console.log("Item they're giving doesn't have a value: declining.")
 		}
 	}
-	console.log("Our value: "+ourValue);
-	console.log("Their value: "+theirValue);
+	console.log("Our value: " + ourValue);
+	console.log("Their value: " + theirValue);
 	
     if (ourValue <= theirValue) {
         acceptOffer(offer);
@@ -104,6 +107,7 @@ function processOffer(offer) {
 }
 
 manager.on('newOffer', (offer) => {
+	console.log("New offer received from " + offer.partner)
 	processOffer(offer);
 
 });
